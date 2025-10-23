@@ -18,3 +18,15 @@ def weather(request):
             city = form.cleaned_data['city']
             weather_data = get_weather_data(city)
             
+            if weather_data['cod'] == 200:
+                temperature = weather_data['main']['temp']
+                description = weather_data['weather'][0]['description']
+                context = {'temperature': temperature, 'description': description, 'city': city}
+            else:
+                context = {'error_message': 'City not found'}
+            
+            return render(request, 'weather_app/weather.html', context)
+    else:
+        form = WeatherForm()
+
+    return render(request, 'weather_app/weather.html', {'form': form})
