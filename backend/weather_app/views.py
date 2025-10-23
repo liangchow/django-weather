@@ -4,8 +4,8 @@ from .forms import WeatherForm
 
 # Create your views here.
 def get_weather_data(city):
-    api_key = API_KEY
-    base_url = BASE_URL
+    api_key = 'a5b358bd562e4f5715212afcd371b587'
+    base_url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {'q': city, 'appid': api_key, 'units': 'metric'}
     response = requests.get(base_url, params=params)
     data = response.json()
