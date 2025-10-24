@@ -12,6 +12,7 @@ def get_weather_data(city):
     return data
 
 def weather(request):
+    # If this is a POST request
     if request.method == 'POST':
         form = WeatherForm(request.POST)
         if form.is_valid():
@@ -26,6 +27,8 @@ def weather(request):
                 context = {'error_message': 'City not found'}
             
             return render(request, 'weather_app/weather.html', context)
+    
+    # If GET or other method
     else:
         form = WeatherForm()
 
