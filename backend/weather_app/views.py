@@ -27,10 +27,10 @@ def weather(request):
             else:
                 context = {'error_message': 'City not found'}
             
-            return render(request, 'weather_app/weather.html', context)
+            return render(request, 'weather_app/index.html', context)
     
     # If GET or other method, create a blank form.
     else:
         form = WeatherForm()
 
-    return render(request, 'weather_app/weather.html', {'form': form})
+    return render(request, 'weather_app/index.html', {'form': form})
