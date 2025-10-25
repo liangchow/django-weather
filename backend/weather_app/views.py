@@ -15,6 +15,7 @@ def weather(request):
     # If this is a POST request
     if request.method == 'POST':
         form = WeatherForm(request.POST)
+        
         if form.is_valid():
             city = form.cleaned_data['city']
             weather_data = get_weather_data(city)
@@ -28,7 +29,7 @@ def weather(request):
             
             return render(request, 'weather_app/weather.html', context)
     
-    # If GET or other method
+    # If GET or other method, create a blank form.
     else:
         form = WeatherForm()
 
