@@ -1,10 +1,14 @@
+import os
 import requests
 from django.shortcuts import render
+from dotenv import load_dotenv
 from .forms import WeatherForm
+
+load_dotenv()
 
 # Create your views here.
 def get_weather_data(city):
-    api_key = '3c38654ee73ad8f352eee098eb77aff8'
+    api_key = os.environ.get('OPENWEATHER_API_KEY')
     base_url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {'q': city, 'appid': api_key, 'units': 'metric'}
     response = requests.get(base_url, params=params)
