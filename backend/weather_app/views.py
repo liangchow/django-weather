@@ -29,7 +29,7 @@ def weather(request):
                 description = weather_data['weather'][0]['description']
                 context = {'temperature': temperature, 'description': description, 'city': city}
             else:
-                context = {'error_message': 'City not found'}
+                context = {'error_message': 'City not found. Please try again.'}
             
             return render(request, 'index.html', context)
     
